@@ -37,7 +37,12 @@ public class ChooseActivityFragment extends Fragment {
                 String activityName = (String) textView.getText();
                 Intent intent = new Intent(getActivity(), MainActivity.class);
                 intent.putExtra("activityName", activityName);
-                startActivity(intent);
+
+
+                getActivity().setResult(0, intent);
+                Model.appState = 1;
+                getActivity().finish();
+
                 return true;
             }
         });

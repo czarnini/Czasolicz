@@ -6,13 +6,7 @@ package com.example.android.czasolicz;
 
 public class Model
 {
-    static public int mainActivityCounter = 0;
-
-     static public int dupa()
-     {
-         System.out.print("Dupa");
-         return 1;
-     }
+    static public int appState = 0;
 
 
 }

@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity
             final Button       startActivity    = (Button) findViewById(R.id.StartActivity);
             final Button       changeActivity   = (Button) findViewById(R.id.ChangeActivity);
 
-            LinearLayout activityChoosen  = (LinearLayout) findViewById(R.id.ActivityChoosen);
+            LinearLayout activityChoosen = (LinearLayout) findViewById(R.id.ActivityChosen);
             TextView     activityNameTV   = (TextView) findViewById(R.id.ActivityName);
 
             chooseActivity.setVisibility(GONE);
