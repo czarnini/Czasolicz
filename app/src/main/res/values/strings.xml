@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Czasolicz</string>
+    <string name="action_settings">Settings</string>
+    <string name="ChooseActivity">Aktywności</string>
+    <string name="ChangeActivity">Zmień</string>
+    <string name="title_activity_choose">ChooseActivity</string>
+</resources>
