@@ -11,7 +11,9 @@
         android:id="@+id/ActivitiesList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:childDivider="#00000000"
         android:groupIndicator="@color/colorAccent">
+
     </ExpandableListView>
 
 

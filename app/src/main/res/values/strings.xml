@@ -4,4 +4,5 @@
     <string name="ChooseActivity">Aktywności</string>
     <string name="ChangeActivity">Zmień</string>
     <string name="title_activity_choose">ChooseActivity</string>
+    <string name="title_activity_ready_to_start">ReadyToStart</string>
 </resources>

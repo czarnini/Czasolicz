@@ -27,6 +27,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.android.czasolicz.MainActivity" />
         </activity>
+        <activity
+            android:name=".ReadyToStart"
+            android:label="@string/title_activity_ready_to_start"
+            android:parentActivityName=".ChooseActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.android.czasolicz.ChooseActivity" />
+        </activity>
     </application>
 
 </manifest>

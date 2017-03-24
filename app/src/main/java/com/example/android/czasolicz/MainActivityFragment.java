@@ -36,7 +36,7 @@ public class MainActivityFragment extends Fragment
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), ChooseActivity.class);
-                startActivityForResult(intent, 1);
+                startActivity(intent);
             }
         });
         return rootView;

@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 
+import static com.example.android.czasolicz.MainActivity.mainActivity;
+
 /**
  * A placeholder fragment containing a simple view.
  */
@@ -35,13 +37,15 @@ public class ChooseActivityFragment extends Fragment {
 
                 TextView textView = (TextView) view.findViewById(R.id.list_item);
                 String activityName = (String) textView.getText();
-                Intent intent = new Intent(getActivity(), MainActivity.class);
+                Intent intent = new Intent(getActivity(), ReadyToStart.class);
                 intent.putExtra("activityName", activityName);
+                startActivity(intent);
 
-
-                getActivity().setResult(0, intent);
+               /* getActivity().setResult(0, intent);
                 Model.appState = 1;
-                getActivity().finish();
+
+                */
+                mainActivity.finish();
 
                 return true;
             }
