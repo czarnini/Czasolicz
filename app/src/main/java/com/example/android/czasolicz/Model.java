@@ -7,6 +7,7 @@ package com.example.android.czasolicz;
 public class Model
 {
     static public int appState = 0;
+    static public boolean isTimeStarted = false;
 
 
 }
