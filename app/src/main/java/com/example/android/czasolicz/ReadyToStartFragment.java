@@ -84,6 +84,9 @@ public class ReadyToStartFragment extends Fragment {
             public void onClick(View view) {
                 //@TODO Zaimplementować listenera na stop -> zatrzymaj i
                 // zapisz czas aktywności, odpal nową aktywność z podsumowaniem, zapisz w bazie sqLite
+
+
+                // + Jak rozwiązać problem żeby utrzymać liczenie czasu mimo tego, że użytkownik "ubił apke"
             }
         });
 
