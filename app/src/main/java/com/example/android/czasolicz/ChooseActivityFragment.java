@@ -25,10 +25,10 @@ public class ChooseActivityFragment extends Fragment {
     {
         View rootView = inflater.inflate(R.layout.fragment_choose, container, false);
 
-        ExpandableListUtility elu = new ExpandableListUtility();
+        ExpandableListUtility elu = new ExpandableListUtility(this.getContext());
         ExpandableListView expandableListView = (ExpandableListView) rootView.findViewById(R.id.ActivitiesList);
         ExpandableListAdapter expandableListAdapter = new ExpandableListAdapter(getContext()
-                ,ExpandableListUtility.categories, ExpandableListUtility.childElements);
+                , elu.Categories(), elu.ChildElements());
         expandableListView.setAdapter(expandableListAdapter);
         expandableListView.setOnChildClickListener( new  ExpandableListView.OnChildClickListener(){
             @Override
@@ -41,10 +41,6 @@ public class ChooseActivityFragment extends Fragment {
                 intent.putExtra("activityName", activityName);
                 startActivity(intent);
 
-               /* getActivity().setResult(0, intent);
-                Model.appState = 1;
-
-                */
                 mainActivity.finish();
 
                 return true;

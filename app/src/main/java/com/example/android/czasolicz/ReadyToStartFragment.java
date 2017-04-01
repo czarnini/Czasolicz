@@ -1,5 +1,6 @@
 package com.example.android.czasolicz;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.example.android.czasolicz.data.ActivitiesContract;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import static android.view.View.GONE;
 import static com.example.android.czasolicz.ChooseActivity.chooseActivity;
@@ -82,11 +88,22 @@ public class ReadyToStartFragment extends Fragment {
         stopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //@TODO Zaimplementować listenera na stop -> zatrzymaj i
-                // zapisz czas aktywności, odpal nową aktywność z podsumowaniem, zapisz w bazie sqLite
+
+                Calendar calendar = Calendar.getInstance();
+                SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+
+                ContentValues values = new ContentValues();
+                values.put(ActivitiesContract.History.COLUMN_NAME_DURATION, timer.stopTimer());
+                values.put(ActivitiesContract.History.COLUMN_NAME_ACTIVITY, ReadyToStart.getActivityName());
+                values.put(ActivitiesContract.History.COLUMN_NAME_DATE, df.format(calendar.getTime()));
+
+                Model.insertHistory(values, getContext());
+                Model.listHistory(getContext());
+
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
 
 
-                // + Jak rozwiązać problem żeby utrzymać liczenie czasu mimo tego, że użytkownik "ubił apke"
             }
         });
 

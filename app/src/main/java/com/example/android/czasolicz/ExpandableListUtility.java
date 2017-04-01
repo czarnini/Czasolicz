@@ -1,5 +1,7 @@
 package com.example.android.czasolicz;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,31 +12,25 @@ import java.util.List;
 
 public class ExpandableListUtility
 {
-    public static List<String> categories = new ArrayList<>();
-    public static HashMap<String, List<String>> childElements = new HashMap<>();
-    static
+
+
+    private List<String> categories;
+    private HashMap<String, List<String>> childElements;
+
+    ExpandableListUtility(Context context)
     {
-        categories.add("Produktywność");
-        categories.add("Relaks");
-        categories.add("Sport");
+        categories = new ArrayList<>();
+        childElements = new HashMap<>();
 
-        List<String> cat1 = new ArrayList<>();
-        cat1.add("Praca");
-        cat1.add("Nauka");
+        Model.populateExpandableList(context, categories, childElements);
 
-        List<String> cat2 = new ArrayList<>();
-        cat2.add("Czytanie");
-        cat2.add("Oglądanie telewizji");
-        cat2.add("Internet");
-
-        List<String> cat3 = new ArrayList<>();
-        cat3.add("Bieganie");
-        cat3.add("Jazda na rowerze");
-        cat3.add("Siłownia");
-
-        childElements.put(categories.get(0), cat1);
-        childElements.put(categories.get(1), cat2);
-        childElements.put(categories.get(2), cat3);
     }
 
+    public List<String> Categories() {
+        return categories;
+    }
+
+    public HashMap ChildElements() {
+        return childElements;
+    }
 }

@@ -10,6 +10,7 @@ public class MyTimer
     private long timeInMilliseconds = 0L;
     private long timeSwapBuff = 0L;
     private long updatedTime = 0L;
+    private boolean stop = false;
     private Handler customHandler = new Handler();
     private TextView timerValue;
     private Runnable updateTimerThread = new Runnable() {
@@ -39,8 +40,10 @@ public class MyTimer
         customHandler.removeCallbacks(updateTimerThread);
     }
 
-    public double stopTimer() {
-        return 0.0;
+    public long stopTimer() {
+        stop = true;
+        return updatedTime;
     }
+
 
 }
