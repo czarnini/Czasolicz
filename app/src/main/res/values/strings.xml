@@ -5,4 +5,8 @@
     <string name="ChangeActivity">Zmień</string>
     <string name="title_activity_choose">ChooseActivity</string>
     <string name="title_activity_ready_to_start">ReadyToStart</string>
+    <string name="title_activity_tmp">tmp</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>

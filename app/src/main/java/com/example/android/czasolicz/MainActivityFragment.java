@@ -48,7 +48,6 @@ public class MainActivityFragment extends Fragment
         final View rootView = getView();
         Button chooseActivity = (Button) rootView.findViewById(R.id.ChooseActivity);
         final Button startActivity = (Button) rootView.findViewById(R.id.StartActivity);
-        final Button changeActivity = (Button) rootView.findViewById(R.id.ChangeActivity);
 
         LinearLayout activityChosen = (LinearLayout) rootView.findViewById(R.id.ActivityChosen);
         TextView activityNameTV = (TextView) rootView.findViewById(R.id.ActivityName);
@@ -60,13 +59,6 @@ public class MainActivityFragment extends Fragment
         activityNameTV.setText(activityName);
         startActivity.setVisibility(View.VISIBLE);
 
-        changeActivity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent1 = new Intent(getActivity(), ChooseActivity.class);
-                startActivity(intent1);
-            }
-        });
 
         startActivity.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +66,6 @@ public class MainActivityFragment extends Fragment
                 rootView.findViewById(R.id.PauseActivity).setVisibility(View.VISIBLE);
                 rootView.findViewById(R.id.StopActivity).setVisibility(View.VISIBLE);
                 startActivity.setVisibility(GONE);
-                changeActivity.setVisibility(GONE);
 
             }
         });

@@ -36,14 +36,6 @@
             android:textAlignment="center"
             android:textSize="50sp" />
 
-        <Button
-            android:id="@+id/ChangeActivity"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/colorPrimary"
-            android:text="@string/ChangeActivity"
-            android:textColor="@android:color/white" />
 
     </LinearLayout>
 
