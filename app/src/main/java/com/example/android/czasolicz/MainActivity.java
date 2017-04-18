@@ -7,6 +7,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.android.czasolicz.data.ActivitiesHelper;
+
 public class MainActivity extends AppCompatActivity {
     public static Activity mainActivity;
 
@@ -19,8 +21,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        //   Model.insertDummyData(this);
+        ActivitiesHelper mDb = new ActivitiesHelper(this);
+        mDb.insertDummyData();
 
 
     }

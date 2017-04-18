@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Czasolicz</string>
     <string name="action_settings">Settings</string>
-    <string name="ChooseActivity">Aktywności</string>
+    <string name="ChooseActivity">Nowa Przygoda</string>
     <string name="ChangeActivity">Zmień</string>
     <string name="title_activity_choose">ChooseActivity</string>
     <string name="title_activity_ready_to_start">ReadyToStart</string>
@@ -9,4 +9,7 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="moja_historia">Moja Historia</string>
+    <string name="moje_statystyki">Moje Statystyki</string>
+    <string name="title_activity_hiatory">Hiatory</string>
 </resources>

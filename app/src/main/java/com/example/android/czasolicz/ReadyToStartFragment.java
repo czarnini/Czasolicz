@@ -44,7 +44,6 @@ public class ReadyToStartFragment extends Fragment
         startButton = (Button) rootView.findViewById(R.id.StartActivity);
         timer = new MyTimer((TextView) rootView.findViewById(R.id.TimerValue));
         dbHelper = new ActivitiesHelper(getContext());
-        dbHelper.open();
 
 
 

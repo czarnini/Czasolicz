@@ -57,17 +57,8 @@ public class MainActivityFragment extends Fragment
         chooseActivity.setVisibility(GONE);
         activityChosen.setVisibility(View.VISIBLE);
         activityNameTV.setText(activityName);
-        startActivity.setVisibility(View.VISIBLE);
 
 
-        startActivity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                rootView.findViewById(R.id.PauseActivity).setVisibility(View.VISIBLE);
-                rootView.findViewById(R.id.StopActivity).setVisibility(View.VISIBLE);
-                startActivity.setVisibility(GONE);
 
-            }
-        });
     }
 }

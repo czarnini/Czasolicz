@@ -5,12 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.widget.ExpandableListView;
 
-public class ChooseActivity extends AppCompatActivity {
+public class ChooseActivity extends AppCompatActivity
+{
 
     public static Activity chooseActivity;
-    private ExpandableListView activities;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -25,8 +24,6 @@ public class ChooseActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
 
 
     }
