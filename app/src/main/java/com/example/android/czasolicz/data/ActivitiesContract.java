@@ -8,18 +8,18 @@ import android.provider.BaseColumns;
 
 public final class ActivitiesContract {
     public static final String SQL_CREATE_TABLE_CAT =
-            " CREATE TABLE " + Categories.TABLE_NAME + " ( " +
+            " CREATE TABLE if not exists " + Categories.TABLE_NAME + " ( " +
                     Categories.COLUMN_NAME_CATEGORY + " TEXT PRIMARY KEY); ";
 
     public static final String SQL_CREATE_TABLE_ACT =
-            " CREATE TABLE " + Activities.TABLE_NAME + " ( " +
+            " CREATE TABLE if not exists " + Activities.TABLE_NAME + " ( " +
                     Activities.COLUMN_NAME_ACTIVITY + " TEXT PRIMARY KEY, " +
                     Activities.COLUMN_NAME_CATEGORY + " TEXT, " +
                     " FOREIGN KEY (" + Activities.COLUMN_NAME_CATEGORY + ") " +
                     " REFERENCES " + Categories.TABLE_NAME + "(" + Categories.COLUMN_NAME_CATEGORY + ")); ";
 
     public static final String SQL_CREATE_TABLE_HIST =
-            " CREATE TABLE " + History.TABLE_NAME + " (" +
+            " CREATE TABLE if not exists " + History.TABLE_NAME + " (" +
                     History._ID + " INTEGER PRIMARY KEY, " +
                     History.COLUMN_NAME_DATE + " DATETIME, " +
                     History.COLUMN_NAME_DURATION + " REAL, " +

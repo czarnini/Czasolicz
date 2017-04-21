@@ -44,11 +44,12 @@ public class ReadyToStartFragment extends Fragment
         startButton = (Button) rootView.findViewById(R.id.StartActivity);
         timer = new MyTimer((TextView) rootView.findViewById(R.id.TimerValue));
         dbHelper = new ActivitiesHelper(getContext());
+        dbHelper.open();
 
 
 
         final LinearLayout activityChosen = (LinearLayout) rootView.findViewById(R.id.ActivityChosen);
-        TextView activityNameTV = (TextView) rootView.findViewById(R.id.ActivityName);
+        TextView activityNameTV = (TextView) rootView.findViewById(R.id.activityName);
 
         activityChosen.setVisibility(View.VISIBLE);
         activityNameTV.setText(ReadyToStart.getActivityName());
@@ -92,11 +93,12 @@ public class ReadyToStartFragment extends Fragment
 
                 Calendar calendar = Calendar.getInstance();
                 SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
-
-                dbHelper.createActivity(new Activity(ReadyToStart.getActivityName(), timer.stopTimer(), df.format(calendar.getTime())));
+                Activity act = new Activity(ReadyToStart.getActivityName(), timer.stopTimer(), df.format(calendar.getTime()));
+                long tmp = dbHelper.createActivity(act);
 
                 Intent intent = new Intent(getActivity(), MainActivity.class);
                 startActivity(intent);
+                ReadyToStart.rts.finish();
 
 
             }

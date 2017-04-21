@@ -63,6 +63,7 @@ public class ChooseActivityFragment extends Fragment
         categories = new ArrayList<>();
         childElements = new HashMap<>();
         ActivitiesHelper mDbHelper = new ActivitiesHelper(this.getContext());
+        mDbHelper.open();
         Cursor categoryCursor = mDbHelper.fetchAllCategories();
 
         try

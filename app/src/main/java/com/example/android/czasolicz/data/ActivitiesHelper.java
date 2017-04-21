@@ -17,39 +17,26 @@ import java.util.List;
  * Created by Michał on 30.03.2017.
  */
 
-public class ActivitiesHelper extends SQLiteOpenHelper
+public class ActivitiesHelper
 {
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "Activities.db";
     private SQLiteDatabase mDb;
     private Context mContext;
     private Cursor mCursor;
-
+    private myHelper dbHelper;
 
     public ActivitiesHelper(Context context)
     {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
         mContext = context;
-        open();
     }
 
-    @Override
-    public void onCreate(SQLiteDatabase db)
-    {
-        db.execSQL(ActivitiesContract.SQL_CREATE_TABLE_CAT);
-        db.execSQL(ActivitiesContract.SQL_CREATE_TABLE_ACT);
-        db.execSQL(ActivitiesContract.SQL_CREATE_TABLE_HIST);
-    }
 
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int i, int i1)
-    {
-        Log.w(ActivitiesHelper.class.getName(), "PROBA UDPATETU");
-    }
 
     public void open()
     {
-        mDb = this.getWritableDatabase();
+        dbHelper = new myHelper(mContext);
+        mDb = dbHelper.getWritableDatabase();
     }
 
 
@@ -80,17 +67,15 @@ public class ActivitiesHelper extends SQLiteOpenHelper
         childElements.put(categories.get(1), relaks);
         childElements.put(categories.get(2), sport);
 
-        mContext.deleteDatabase(ActivitiesHelper.DATABASE_NAME);
 
-        ActivitiesHelper mDbHelper = new ActivitiesHelper(mContext);
-        SQLiteDatabase db = mDbHelper.getWritableDatabase();
+
 
 
         for (String i : categories)
         {
             ContentValues contentValues = new ContentValues();
             contentValues.put(ActivitiesContract.Categories.COLUMN_NAME_CATEGORY, i);
-            db.insert(ActivitiesContract.Categories.TABLE_NAME, null, contentValues);
+            mDb.insert(ActivitiesContract.Categories.TABLE_NAME, null, contentValues);
         }
 
 
@@ -102,28 +87,32 @@ public class ActivitiesHelper extends SQLiteOpenHelper
                 ContentValues values = new ContentValues();
                 values.put(ActivitiesContract.Activities.COLUMN_NAME_ACTIVITY, j);
                 values.put(ActivitiesContract.Activities.COLUMN_NAME_CATEGORY, i);
-                db.insert(ActivitiesContract.Activities.TABLE_NAME, null, values);
+                mDb.insert(ActivitiesContract.Activities.TABLE_NAME, null, values);
             }
         }
     }
 
     public long createActivity(Activity activity)
     {
+
         ContentValues values = new ContentValues();
         values.put(ActivitiesContract.History.COLUMN_NAME_ACTIVITY, activity.getmName());
         values.put(ActivitiesContract.History.COLUMN_NAME_DATE, activity.getmDate());
         values.put(ActivitiesContract.History.COLUMN_NAME_DURATION, activity.getmDuration());
         return mDb.insert(ActivitiesContract.History.TABLE_NAME, null, values);
+
     }
 
 
     public Cursor fetchAllActivites()
     {
-        String[] columns = new String[]{ActivitiesContract.History.COLUMN_NAME_ACTIVITY,
+        String[] columns = new String[]{
+                ActivitiesContract.History._ID,
+                ActivitiesContract.History.COLUMN_NAME_ACTIVITY,
                 ActivitiesContract.History.COLUMN_NAME_DATE,
                 ActivitiesContract.History.COLUMN_NAME_DURATION};
 
-        mCursor = mDb.query(ActivitiesContract.History.TABLE_NAME,
+        Cursor historyCursor = mDb.query(ActivitiesContract.History.TABLE_NAME,
                 columns,
                 null,
                 null,
@@ -131,8 +120,15 @@ public class ActivitiesHelper extends SQLiteOpenHelper
                 null,
                 null
         );
-        if (mCursor != null) mCursor.moveToFirst();
-        return mCursor;
+        if (historyCursor != null)
+        {
+//            mCursor.moveToFirst();
+            while (historyCursor.moveToNext())
+            {
+                String aaa = historyCursor.getString(1);
+            }
+        }
+        return historyCursor;
     }
 
     public Cursor fetchAllCategories()
@@ -172,6 +168,7 @@ public class ActivitiesHelper extends SQLiteOpenHelper
                 null,
                 null,
                 null);
+
         return activitiesCursor;
     }
 
@@ -197,6 +194,29 @@ public class ActivitiesHelper extends SQLiteOpenHelper
     {
         mDb.delete(ActivitiesContract.History.TABLE_NAME, null, null);
     }
+
+    private class myHelper extends SQLiteOpenHelper
+    {
+        public myHelper(Context context)
+        {
+            super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        }
+
+        @Override
+        public void onCreate(SQLiteDatabase db)
+        {
+            db.execSQL(ActivitiesContract.SQL_CREATE_TABLE_CAT);
+            db.execSQL(ActivitiesContract.SQL_CREATE_TABLE_ACT);
+            db.execSQL(ActivitiesContract.SQL_CREATE_TABLE_HIST);
+        }
+
+        @Override
+        public void onUpgrade(SQLiteDatabase db, int i, int i1)
+        {
+            Log.w(ActivitiesHelper.class.getName(), "PROBA UDPATETU");
+        }
+    }
+
 
 
 }

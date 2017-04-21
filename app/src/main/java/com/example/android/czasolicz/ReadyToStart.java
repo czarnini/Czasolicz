@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 public class ReadyToStart extends AppCompatActivity {
 
 
+    public static ReadyToStart rts;
     private static String activityName;
 
     public static String getActivityName() {
@@ -34,6 +35,7 @@ public class ReadyToStart extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         Intent intent = getIntent();
         activityName = intent.getStringExtra("activityName");
+        rts = this;
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ready_to_start);

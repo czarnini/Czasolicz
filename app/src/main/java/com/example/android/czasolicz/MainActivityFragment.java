@@ -32,10 +32,22 @@ public class MainActivityFragment extends Fragment
         chooseActivityButton = (Button) rootView.findViewById(R.id.ChooseActivity);
 
 
+
         chooseActivityButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), ChooseActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        final Button showHistory = (Button) rootView.findViewById(R.id.showHistory);
+        showHistory.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(getActivity(), History.class);
                 startActivity(intent);
             }
         });
@@ -50,7 +62,7 @@ public class MainActivityFragment extends Fragment
         final Button startActivity = (Button) rootView.findViewById(R.id.StartActivity);
 
         LinearLayout activityChosen = (LinearLayout) rootView.findViewById(R.id.ActivityChosen);
-        TextView activityNameTV = (TextView) rootView.findViewById(R.id.ActivityName);
+        TextView activityNameTV = (TextView) rootView.findViewById(R.id.activityName);
 
         String activityName = data.getStringExtra("activityName");
 
