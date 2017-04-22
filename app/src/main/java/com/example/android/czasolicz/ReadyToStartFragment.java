@@ -96,6 +96,7 @@ public class ReadyToStartFragment extends Fragment
                 Activity act = new Activity(ReadyToStart.getActivityName(), timer.stopTimer(), df.format(calendar.getTime()));
                 long tmp = dbHelper.createActivity(act);
 
+                MainActivity.mainActivity.finish();
                 Intent intent = new Intent(getActivity(), MainActivity.class);
                 startActivity(intent);
                 ReadyToStart.rts.finish();
