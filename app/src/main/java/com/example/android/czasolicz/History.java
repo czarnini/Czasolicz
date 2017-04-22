@@ -3,7 +3,6 @@ package com.example.android.czasolicz;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.ListView;
@@ -32,7 +31,7 @@ public class History extends AppCompatActivity
         ActivitiesHelper dbHelper = new ActivitiesHelper(this);
         dbHelper.open();
         Cursor historyCursor = dbHelper.fetchAllActivites();
-        SimpleCursorAdapter cursorAdapter = new SimpleCursorAdapter(this, R.layout.history_list_element, historyCursor, from, to, 0);
+        ActivitiesSimpleCursorAdapter cursorAdapter = new ActivitiesSimpleCursorAdapter(this, R.layout.history_list_element, historyCursor, from, to, 0);
         historyList.setAdapter(cursorAdapter);
 
     }

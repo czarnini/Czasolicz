@@ -16,12 +16,25 @@ public class MyTimer
     private Runnable updateTimerThread = new Runnable() {
         @Override
         public void run() {
+
+
             timeInMilliseconds = SystemClock.uptimeMillis() - startTime;
             updatedTime = timeSwapBuff + timeInMilliseconds;
-            int secs = (int) (updatedTime / 1000);
-            int mins = secs / 60;
-            secs = secs % 60;
-            timerValue.setText("" + mins + ":" + String.format("%02d", secs));
+            String hh, mm, ss;
+            int s = (int) ((updatedTime / 1000) % 60);
+            int m = (int) ((updatedTime / 60000) % 60);
+            int h = (int) ((updatedTime / 3600000) % 60);
+
+            if (s >= 10) ss = String.valueOf(s);
+            else ss = "0" + String.valueOf(s);
+
+            if (m > 0) mm = String.valueOf(m) + ":";
+            else mm = "";
+
+            if (h > 0) hh = String.valueOf(h) + ":";
+            else hh = "";
+
+            timerValue.setText(hh + mm + ss);
             customHandler.postDelayed(this, 0);
         }
     };

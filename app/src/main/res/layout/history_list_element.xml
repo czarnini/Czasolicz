@@ -16,14 +16,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Bieganie"
-            android:textSize="25sp"/>
+            android:textSize="16sp"/>
 
         <TextView
             android:id="@+id/activityDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="01.01.2017"
-            android:textSize="25sp"/>
+            android:textSize="16sp"/>
     </LinearLayout>
 
     <TextView
@@ -31,8 +31,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="40"
-        android:gravity="center"
-        android:text="00:00"
-        android:textSize="50sp"/>
+        android:gravity="right"
+        android:text="00:00:00"
+        android:textSize="25sp"/>
 
 </LinearLayout>

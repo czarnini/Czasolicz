@@ -111,6 +111,7 @@ public class ActivitiesHelper
                 ActivitiesContract.History.COLUMN_NAME_ACTIVITY,
                 ActivitiesContract.History.COLUMN_NAME_DATE,
                 ActivitiesContract.History.COLUMN_NAME_DURATION};
+        String orderBy = ActivitiesContract.History._ID + " DESC";
 
         Cursor historyCursor = mDb.query(ActivitiesContract.History.TABLE_NAME,
                 columns,
@@ -118,7 +119,7 @@ public class ActivitiesHelper
                 null,
                 null,
                 null,
-                null
+                orderBy
         );
         if (historyCursor != null)
         {
