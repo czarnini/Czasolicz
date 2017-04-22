@@ -16,8 +16,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import static com.example.android.czasolicz.MainActivity.mainActivity;
-
 /**
  * A placeholder fragment containing a simple view.
  */
@@ -49,7 +47,6 @@ public class ChooseActivityFragment extends Fragment
                 intent.putExtra("activityName", activityName);
                 startActivity(intent);
 
-                mainActivity.finish();
 
                 return true;
             }

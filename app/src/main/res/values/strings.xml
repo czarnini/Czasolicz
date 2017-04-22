@@ -12,4 +12,6 @@
     <string name="moja_historia">Moja Historia</string>
     <string name="moje_statystyki">Moje Statystyki</string>
     <string name="title_activity_hiatory">Hiatory</string>
+    <string name="twoja_ostatnia_aktywnosc">Twoja ostatnia aktywność:</string>
+    <string name="brakAktywnosciInfo">Nie masz jeszcze żadnych aktywności, bierz się do pracy!</string>
 </resources>

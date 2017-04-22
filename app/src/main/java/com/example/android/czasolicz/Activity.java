@@ -11,7 +11,7 @@ public class Activity
     private String mDate;
     private long mId;
 
-    Activity()
+    public Activity()
     {
         mName = mDate = null;
         mDuration = 0;

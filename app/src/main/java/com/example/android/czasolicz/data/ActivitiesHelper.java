@@ -104,7 +104,7 @@ public class ActivitiesHelper
     }
 
 
-    public Cursor fetchAllActivites()
+    public Cursor fetchAllActivities()
     {
         String[] columns = new String[]{
                 ActivitiesContract.History._ID,
@@ -121,17 +121,24 @@ public class ActivitiesHelper
                 null,
                 orderBy
         );
-        if (historyCursor != null)
-        {
-//            mCursor.moveToFirst();
-            while (historyCursor.moveToNext())
-            {
-                String aaa = historyCursor.getString(1);
-            }
-        }
+
         return historyCursor;
     }
 
+    public Activity fetchFirstActivity()
+    {
+        Cursor cursor = fetchAllActivities();
+        if (cursor != null)
+        {
+            cursor.moveToFirst();
+            Activity first = new Activity();
+            first.setmName(cursor.getString(1));
+            first.setmDuration(cursor.getInt(3));
+            return first;
+        }
+
+        return null;
+    }
     public Cursor fetchAllCategories()
     {
         String[] columns = new String[]{

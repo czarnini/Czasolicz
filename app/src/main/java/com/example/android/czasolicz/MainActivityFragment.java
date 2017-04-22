@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.android.czasolicz.data.ActivitiesHelper;
+
 import static android.view.View.GONE;
 
 /**
@@ -51,6 +53,39 @@ public class MainActivityFragment extends Fragment
                 startActivity(intent);
             }
         });
+        ActivitiesHelper dbHelper = new ActivitiesHelper(getContext());
+        dbHelper.open();
+        Activity first = dbHelper.fetchFirstActivity();
+        TextView lastActivityInfo = (TextView) rootView.findViewById(R.id.lastActivityInfo);
+        TextView lastActivityDuration = (TextView) rootView.findViewById(R.id.lastActivityDuration);
+        TextView lastActivityName = (TextView) rootView.findViewById(R.id.lastActivityName);
+        if (first == null)
+        {
+            lastActivityInfo.setText(R.string.brakAktywnosciInfo);
+        }
+        else
+        {
+            long ms = first.getmDuration();
+            String hh, mm, ss;
+            int s = (int) ((ms / 1000) % 60);
+            int m = (int) ((ms / 60000) % 60);
+            int h = (int) ((ms / 3600000) % 60);
+
+            if (s >= 10) ss = String.valueOf(s);
+            else ss = "0" + String.valueOf(s);
+
+            if (m >= 10) mm = String.valueOf(m) + ":";
+            else mm = 0 + String.valueOf(m) + ":";
+
+            if (h > 0) hh = String.valueOf(h) + ":";
+            else hh = "";
+
+            lastActivityInfo.setText(R.string.twoja_ostatnia_aktywnosc);
+            lastActivityName.setText(first.getmName());
+            lastActivityDuration.setText(hh + mm + ss);
+
+        }
+
         return rootView;
     }
 

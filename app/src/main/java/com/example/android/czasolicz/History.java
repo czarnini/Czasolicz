@@ -30,7 +30,7 @@ public class History extends AppCompatActivity
         int[] to = {R.id.historyActivityName, R.id.activityDate, R.id.activityDuration};
         ActivitiesHelper dbHelper = new ActivitiesHelper(this);
         dbHelper.open();
-        Cursor historyCursor = dbHelper.fetchAllActivites();
+        Cursor historyCursor = dbHelper.fetchAllActivities();
         ActivitiesSimpleCursorAdapter cursorAdapter = new ActivitiesSimpleCursorAdapter(this, R.layout.history_list_element, historyCursor, from, to, 0);
         historyList.setAdapter(cursorAdapter);
 
